@@ -23,7 +23,7 @@ import com.alibaba.citrus.springext.util.SpringExtUtil;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.BeanDefinitionHolder;
 import org.springframework.beans.factory.config.BeanReference;
-import org.springframework.beans.factory.config.BeanReferenceFactoryBean;
+import org.springframework.beans.factory.config.remain.BeanReferenceFactoryBean;
 import org.springframework.beans.factory.config.RuntimeBeanReference;
 import org.springframework.beans.factory.support.AbstractBeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;

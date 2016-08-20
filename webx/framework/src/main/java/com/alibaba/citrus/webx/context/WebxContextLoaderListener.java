@@ -17,6 +17,8 @@
 
 package com.alibaba.citrus.webx.context;
 
+import javax.servlet.ServletContextEvent;
+
 import org.springframework.web.context.ContextLoader;
 import org.springframework.web.context.ContextLoaderListener;
 
@@ -35,7 +37,16 @@ import org.springframework.web.context.ContextLoaderListener;
  * @author Michael Zhou
  */
 public class WebxContextLoaderListener extends ContextLoaderListener {
-    @Override
+	private ContextLoader contextLoader;
+	@Override
+	public void contextInitialized(ServletContextEvent event) {
+		this.contextLoader = createContextLoader();
+		if (this.contextLoader == null) {
+			this.contextLoader = this;
+		}
+		this.contextLoader.initWebApplicationContext(event.getServletContext());
+	}
+	
     protected final ContextLoader createContextLoader() {
         return new WebxComponentsLoader() {
 

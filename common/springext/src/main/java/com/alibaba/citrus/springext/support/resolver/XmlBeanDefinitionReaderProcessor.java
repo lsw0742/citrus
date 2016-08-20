@@ -100,6 +100,13 @@ public class XmlBeanDefinitionReaderProcessor {
      */
     public static class DocumentReaderSkippingValidation extends DefaultBeanDefinitionDocumentReader {
         @Override
+    	protected BeanDefinitionParserDelegate createDelegate(
+    			XmlReaderContext readerContext, Element root, BeanDefinitionParserDelegate parentDelegate) {
+
+    		BeanDefinitionParserDelegate delegate = createHelper(readerContext, root);
+    		return delegate;
+    	}
+        
         protected BeanDefinitionParserDelegate createHelper(XmlReaderContext readerContext, Element root) {
             BeanDefinitionParserDelegate delegate = new BeanDefinitionParserDelegateSkippingValidation(readerContext);
             delegate.initDefaults(root);

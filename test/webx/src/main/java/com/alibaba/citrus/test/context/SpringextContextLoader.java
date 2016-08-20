@@ -17,10 +17,12 @@
 
 package com.alibaba.citrus.test.context;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.test.context.MergedContextConfiguration;
+import org.springframework.util.StringUtils;
+
 import com.alibaba.citrus.service.resource.support.context.ResourceLoadingXmlApplicationContext;
 import com.alibaba.citrus.springext.support.context.AbstractXmlApplicationContext;
-import org.springframework.context.ApplicationContext;
-import org.springframework.util.StringUtils;
 
 /**
  * 用来创建基于springext的context。
@@ -46,4 +48,10 @@ public class SpringextContextLoader extends AbstractContextLoader {
 
     protected void prepareContext(AbstractXmlApplicationContext context) {
     }
+    
+	@Override
+	public ApplicationContext loadContext(MergedContextConfiguration mergedConfig) throws Exception {
+		// TODO Auto-generated method stub		
+		return this.loadContext(mergedConfig.getLocations());
+	}    
 }
